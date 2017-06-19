@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\ProjectUser;
 use App\Models\UserGroup;
 use App\Models\UserProfile;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,5 +38,10 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(UserProfile::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(ProjectUser::class);
     }
 }
