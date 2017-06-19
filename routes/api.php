@@ -19,4 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => 'auth:api'], function() {
     Route::get('/me', 'UsersController@me');
+
+    Route::post('/hits/{userId}', 'HitsController@store');
 });
