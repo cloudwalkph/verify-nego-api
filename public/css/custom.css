@@ -1,0 +1,310 @@
+.navbar-brand {
+    padding: 0;
+}
+
+.jw-title {
+    position: absolute !important;
+    top: 35px !important;
+}
+#video-selection {
+    position: absolute !important;
+    z-index: 1000 !important;    
+    width: 48%;
+    right: 2%;
+}
+
+.navbar-brand img {
+    width: 100%;
+    height: 100%;
+}
+
+.alert-primary {
+    background-color: #FF7300;
+    color: #fff;
+    border-radius: 0;
+    margin-top: -25px;
+}
+
+.info-section {
+    background-color: #3D403D;
+    margin-top: -25px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info-section-2 {
+    background-color: #484A48;
+    margin-top: -25px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.nav-back {
+    font-size: 50px;
+    align-self: center;
+}
+
+.info-sub-title {
+    font-size: 20px;
+    color: #c3c3c3;
+}
+
+.info-title {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.info-title h1 {
+    padding: 0;
+    margin: 0;
+    align-self: center;
+}
+
+table {
+    border: 1px solid #D2D0DD;
+}
+
+table tbody tr {
+    cursor: pointer;
+}
+
+table tbody tr:hover {
+    background-color: #F3F2F8 !important;
+}
+
+table thead {
+    background-color: #F5F5F5;
+    border-top: 1px solid #D2D0DD;
+}
+
+table thead th {
+    font-size: 18px;
+}
+
+td {
+    font-size: 16px;
+}
+
+/* Content */
+.content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.content > .description {
+    display: flex;
+    flex: 1;
+}
+
+.content > .video-feed {
+    display: flex;
+    flex: 3;
+}
+
+.time-and-video {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.time-and-video > div {
+    min-height: 500px;
+    margin-top: 40px;
+}
+
+.other-graphs {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.other-graphs > div {
+    min-height: 500px;
+}
+
+.other-graphs > .graph {
+    width: 100%;
+    height: 500px;
+    background-color: #ff932e;
+}
+
+.time-and-video > .time-graph {
+    width: 100%;
+    background-color: #2e2e2e;
+}
+
+.agency-title {
+    font-weight: bold;
+    color: #000;
+}
+
+.custom-tabs > li.active > a, .custom-tabs > li.active > a:hover, .custom-tabs > li.active > a:focus {
+    color: #ffffff;
+    background-color: transparent;
+    border-bottom: 1px solid #ff7300;
+    cursor: default;
+}
+
+.nav.custom-tabs > li > a:hover, .nav.custom-tabs > li > a:focus {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.custom-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+}
+.custom-tabs > li a {
+    text-transform: uppercase;
+    color: #B4B4B4;
+}
+
+
+/* MAPS */
+ .map-control {
+     background-color: #fff;
+     border: 1px solid #ccc;
+     box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+     font-family: 'Roboto','sans-serif';
+     margin: 10px;
+     /* Hide the control initially, to prevent it from appearing
+        before the map loads. */
+     display: none;
+ }
+/* Display the control once it is inside the map. */
+#map .map-control { display: block; }
+
+#map {
+    height: 730px;
+    position: relative;
+    width: 100%;
+}
+
+.maps-frame {
+    height: 530px;
+    width: 100%;
+}
+
+.gm-style-iw {
+    width: 350px !important;
+    top: 15px !important;
+    left: 0px !important;
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+    border: 1px solid rgba(233, 167, 60, 0.6);
+    border-radius: 2px 2px 10px 10px;
+}
+
+.gm-style-iw > div {
+    width: 100%;
+}
+
+#iw-container {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+#iw-container .iw-title {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #e9953b;
+    color: white;
+    margin: 0;
+    border-radius: 2px 2px 0 0;
+    width: 100%;
+}
+#iw-container .iw-content {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-right: 1px;
+    padding: 15px 5px 20px 15px;
+    max-height: 140px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.iw-content img {
+    float: right;
+    margin: 0 5px 5px 10px;
+}
+.iw-subTitle {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px 0;
+}
+.iw-bottom-gradient {
+    position: absolute;
+    width: 326px;
+    height: 25px;
+    bottom: 10px;
+    right: 18px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+}
+
+.kd-tabbed-vert.header-links .kd-tabbutton a {
+    color: #757575;
+    display: inline-block;
+    height: 100%;
+    padding: 0 24px;
+    width: 100%;
+}
+
+.kd-tabbed-vert.header-links .kd-tabbutton {
+    padding: 0;
+}
+
+.kd-tabbed-vert.header-links .kd-tabbutton.selected a {
+    color: #03a9f4;
+}
+
+.kd-tabbed-vert.header-links .kd-tabbutton a:focus {
+    text-decoration: none;
+}
+
+p.top-desc {
+    padding: 1em 1em .1em 1em;
+}
+
+p.bottom-desc {
+    padding: 0em 1em 1em 1em;
+}
+
+.location-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.location-item:nth-child(even) {
+    background-color: #eeeeee;
+    border-top: 1px solid #cacaca;
+    border-bottom: 1px solid #cacaca;
+}
