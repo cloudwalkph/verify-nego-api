@@ -18,35 +18,34 @@
                                 <tr>
                                     <th>Project Name</th>
                                     <th>Active Runs</th>
-                                    <th>Achieve Sampling Target Hits</th>
                                     <th>Completed Runs</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
+                                    @foreach ($projects as $project)
+                                        {{--<tr class="clickable" data-uri="/projects/{{ $project->id }}">--}}
+                                        <tr>
+                                            <td>
+                                                <strong>{{ $project->name }}</strong>
+                                            </td>
 
+                                            <td>
+                                                {{ $project->locations()->onGoing()->count() }} / {{ $project->locations()->count() }}
+                                            </td>
+
+                                            <td>
+                                                {{ $project->locations()->completed()->count() }} / {{ $project->locations()->count() }}
+                                            </td>
+
+                                            <td>
+                                                {{ ucwords($project->status) }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-
-
-                            <legend>Shared Projects</legend>
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Project Name</th>
-                                    <th>Active Runs</th>
-                                    <th>Achieved Target Hits</th>
-                                    <th>Completed Runs</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-
-                                </tbody>
-                            </table>
-
                         </div>
                     </div>
                 </div>
