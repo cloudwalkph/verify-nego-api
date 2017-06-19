@@ -18,3 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', 'Admin\UserController@index');
+        Route::get('/create', 'Admin\UserController@create');
+        Route::post('/create', 'Admin\UserController@store');
+        Route::get('/update/{id}', 'Admin\UserController@edit');
+        Route::post('/update/{id}', 'Admin\UserController@update');
+        Route::delete('/{id}', 'Admin\UserController@destroy');
+        Route::get('/{id}', 'Admin\UserController@show');
+    });
+
+});
