@@ -12,6 +12,10 @@ class ProjectLocation extends Model
 
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'deleted_at'
+    ];
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'project_location_user');

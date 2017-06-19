@@ -12,6 +12,10 @@ class UserGroup extends Model
 
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'deleted_at'
+    ];
+
     public function users()
     {
         return $this->hasMany(User::class);
