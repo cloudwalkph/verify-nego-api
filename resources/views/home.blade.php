@@ -32,11 +32,11 @@
                                             </td>
 
                                             <td>
-                                                {{ $project->locations()->onGoing()->count() }} / {{ $project->locations()->count() }}
+
                                             </td>
 
                                             <td>
-                                                {{ $project->locations()->completed()->count() }} / {{ $project->locations()->count() }}
+
                                             </td>
 
                                             <td>
