@@ -25,14 +25,14 @@ class CreateHitsTable extends Migration
             $table->string('address')->nullable();
             $table->string('other_details')->nullable();
             $table->string('image')->nullable();
-            $table->json('location')->nullable();
+            $table->enum('location', ['GMA', 'NORTH LUZON', 'SOUTH LUZON', 'VISAYAS', 'MINDANAO']);
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('project_location_id')
-                ->references('id')
-                ->on('project_locations')
-                ->onDelete('cascade');
+//            $table->foreign('project_location_id')
+//                ->references('id')
+//                ->on('project_locations')
+//                ->onDelete('cascade');
         });
     }
 

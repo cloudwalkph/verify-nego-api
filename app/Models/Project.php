@@ -22,18 +22,8 @@ class Project extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function polls()
+    public function project_user()
     {
-        return $this->belongsToMany(Poll::class);
-    }
-
-    public function locations()
-    {
-        return $this->hasMany(ProjectLocation::class);
-    }
-
-    public function sharedUsers()
-    {
-        return $this->belongsTo(ProjectShare::class, 'project_id');
+        return $this->hasMany(ProjectUser::class);
     }
 }
