@@ -13,8 +13,8 @@ class UserGroupsTableSeeder extends Seeder
     {
         $groups = [
             'admin',
-            'client',
-            'ba'
+            'staff',
+            'negotiator'
         ];
 
         foreach ($groups as $group) {

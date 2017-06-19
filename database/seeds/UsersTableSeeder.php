@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'user_group_id' => 3,
-                'email' => 'ba1@verify.com',
+                'email' => 'nego1@verify.com',
                 'password'  => bcrypt('password'),
                 'profile'   => [
                     'first_name'    => 'rina',
@@ -47,7 +47,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'user_group_id' => 3,
-                'email' => 'ba2@verify.com',
+                'email' => 'nego2@verify.com',
                 'password'  => bcrypt('password'),
                 'profile'   => [
                     'first_name'    => 'bea',
