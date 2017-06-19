@@ -14,7 +14,7 @@ class UsersController extends Controller {
             return response()->json(['unauthenticated'], 401);
         }
 
-        $user = User::with('profile', 'userGroup')
+        $user = User::with('profile', 'group')
             ->where('id', $user->id)
             ->first();
 
