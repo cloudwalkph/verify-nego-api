@@ -12,6 +12,9 @@
             <li>
                 <a href="/admin/users"><i class="fa fa-users"></i><span> Users</span></a>
             </li>
+            <li>
+                <a href="/admin/projects"><i class="fa fa-calendar-check-o"></i><span> Projects</span></a>
+            </li>
 
         </ul>
     </section>

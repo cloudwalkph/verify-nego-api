@@ -10,7 +10,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/admin"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-                <li><a href="/admin/users"><i class="fa fa-user-secret"></i> Users</a></li>
+                <li><a href="/admin/users"><i class="fa fa-users"></i> Users</a></li>
                 <li class="active">Edit</li>
             </ol>
         </section>
