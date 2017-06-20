@@ -30,7 +30,7 @@ class HitsController extends Controller {
             'address'               => isset($input['address']) ? $input['address'] : '',
             'other_details'         => isset($input['other_details']) ? $input['other_details'] : '',
             'image'                 => $filename,
-            'location'              => isset($input['location']) ? json_encode($input['location']) : null
+            'location'              => isset($input['location']) ? $input['location'] : ''
         ];
 
         $newHit = Hit::create($hit);
