@@ -34,6 +34,6 @@ class HitsController extends Controller {
 
         $newHit = Hit::create($hit);
 
-        return response()->json($newHit, 200);
+        return response()->json($newHit, 201);
     }
 }
