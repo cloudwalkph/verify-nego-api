@@ -19,6 +19,11 @@ class CreateUserLocationsTable extends Migration
             $table->double('lat');
             $table->double('lng');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
