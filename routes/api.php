@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => 'auth:api'], function() {
     Route::get('/me', 'UsersController@me');
     Route::get('/events', 'UsersController@events');
+    Route::get('/hits/{projectId}', 'HitsController@byProject');
     Route::post('/gps', 'UsersController@saveLocation');
     Route::post('/hits/{projectId}', 'HitsController@store');
 });
