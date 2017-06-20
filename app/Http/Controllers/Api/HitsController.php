@@ -11,12 +11,11 @@ class HitsController extends Controller {
     public function store(Request $request, $projectId)
     {
         $input = $request->all();
-        if (! $request->hasFile('image')) {
-            return response()->json('no image found', 400);
+        $filename = "";
+        if ($request->hasFile('image')) {
+            $filename = uniqid().'.jpeg';
+            $path = $request->file('image')->storeAs('public', $filename);
         }
-
-        $filename = uniqid().'.jpeg';
-        $path = $request->file('image')->storeAs('public', $filename);
 
         $hit = [
             'user_id'               => $request->user()->id,
