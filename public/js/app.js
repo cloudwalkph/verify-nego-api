@@ -52448,7 +52448,7 @@ var Component = __webpack_require__(155)(
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/nkmcheng/Public/projects/cloudwalk/verify-nego-api/resources/assets/js/components/Example.vue"
+Component.options.__file = "/Users/alleoindong/Public/projects/cloudwalk/verify-negotiator/resources/assets/js/components/Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -52459,9 +52459,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0995cef2", Component.options)
+    hotAPI.createRecord("data-v-625e28f4", Component.options)
   } else {
-    hotAPI.reload("data-v-0995cef2", Component.options)
+    hotAPI.reload("data-v-625e28f4", Component.options)
   }
 })()}
 
@@ -52550,7 +52550,7 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-0995cef2", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-625e28f4", module.exports)
   }
 }
 
