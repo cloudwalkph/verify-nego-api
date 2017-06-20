@@ -33,4 +33,11 @@ class CreateHitRequest extends FormRequest
             'email' => 'required',
         ];
     }
+
+    public function response(array $errors)
+    {
+        return response()->json($errors, 422);
+    }
+
+
 }
