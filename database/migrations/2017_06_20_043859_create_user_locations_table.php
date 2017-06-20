@@ -15,7 +15,7 @@ class CreateUserLocationsTable extends Migration
     {
         Schema::create('user_locations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->double('lat');
             $table->double('lng');
             $table->timestamps();
