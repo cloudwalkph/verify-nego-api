@@ -185,7 +185,7 @@
                     clearInterval(stepAnimation);
 
                     $.get(`/admin/tracking/${userId}`, function(response) {
-                        $(this).prop('disabled', false);
+                        $('#filter').prop('disabled', false);
 
                         trackSteps(map, response, baPath);
                     });
