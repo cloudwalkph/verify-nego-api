@@ -26,4 +26,9 @@ class Project extends Model
     {
         return $this->hasMany(ProjectUser::class);
     }
+
+    public function hits()
+    {
+        return $this->hasMany(Hit::class);
+    }
 }

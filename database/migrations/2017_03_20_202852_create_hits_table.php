@@ -15,8 +15,7 @@ class CreateHitsTable extends Migration
     {
         Schema::create('hits', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('project_location_id')->unsigned();
-            $table->timestamp('hit_timestamp');
+            $table->integer('project_id')->unsigned();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('contact_number')->nullable();

@@ -17,26 +17,25 @@
                                 <thead>
                                 <tr>
                                     <th>Project Name</th>
-                                    <th>Active Runs</th>
-                                    <th>Completed Runs</th>
+                                    <th>Users Assigned</th>
+                                    <th>Hits</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
                                     @foreach ($projects as $project)
-                                        {{--<tr class="clickable" data-uri="/projects/{{ $project->id }}">--}}
-                                        <tr>
+                                        <tr class="clickable" data-uri="/projects/{{ $project->id }}">
                                             <td>
                                                 <strong>{{ $project->name }}</strong>
                                             </td>
 
                                             <td>
-
+                                                {{ $project->project_user->count('id') }}
                                             </td>
 
                                             <td>
-
+                                                {{ $project->hits->count('id') }}
                                             </td>
 
                                             <td>
