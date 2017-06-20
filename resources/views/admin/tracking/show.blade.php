@@ -180,10 +180,13 @@
 
                 $('#filter').on('click', function() {
                     let userId = $('#user').val();
-                    baPath.clear();
+                    $(this).prop('disabled', true);
+
                     clearInterval(stepAnimation);
 
                     $.get(`/admin/tracking/${userId}`, function(response) {
+                        $('#filter').prop('disabled', false);
+
                         trackSteps(map, response, baPath);
                     });
                 })
