@@ -23,6 +23,9 @@ Route::get('/projects/{projectId}', 'ProjectsController@show');
 
 Route::group(['prefix' => 'admin'], function () {
 
+    Route::get('/tracking', 'TrackingController@show');
+    Route::get('/tracking/{userId}', 'TrackingController@byUser');
+
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', 'Admin\UserController@index');
         Route::get('/create', 'Admin\UserController@create');

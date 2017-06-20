@@ -57,3 +57,13 @@ if (token) {
  * selectize
  */
 window.selectize = require('../lib/selectize');
+
+/**
+ * moment
+ */
+window.moment = require('moment');
+
+/**
+ * daterangepicker
+ */
+window.daterangepicker = require('../lib/daterangepicker');

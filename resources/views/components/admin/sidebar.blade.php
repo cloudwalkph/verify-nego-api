@@ -15,6 +15,9 @@
             <li>
                 <a href="/admin/projects"><i class="fa fa-calendar-check-o"></i><span> Projects</span></a>
             </li>
+            <li>
+                <a href="/admin/tracking"><i class="fa fa-map-marker"></i><span> Tracking</span></a>
+            </li>
 
         </ul>
     </section>
