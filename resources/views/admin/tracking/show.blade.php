@@ -21,12 +21,16 @@
                 <div class="col-md-6">
                     <input type="text" name="daterange" value="06/01/2017 - 06/30/2017" class="form-control" />
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <select name="user_id" id="user">
                         @foreach($users as $user)
                             <option value="{{ $user->id }}">{{ $user->profile->getFullNameAttribute() }}</option>
                         @endforeach
                     </select>
+                </div>
+
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-block" type="button" id="filter" disabled>Submit</button>
                 </div>
             </div>
             <div id="map"></div>
@@ -41,13 +45,15 @@
 
     <script>
         $(function() {
+            let activations, map, stepAnimation;
+
             $('#user').selectize({
                 sortField: 'text'
             });
+
             $('input[name="daterange"]').daterangepicker();
 
             initMap();
-            let map, activations;
 
             function initMap() {
                 // Create the map with no initial style specified.
@@ -90,8 +96,6 @@
                     [14.63358764814696, 121.05660684406757]
                 ];
 
-                let baCoordinates = [];
-
                 let baPath = new google.maps.Polyline({
                     geodesic: true,
                     strokeColor: '#ff9e4a',
@@ -100,6 +104,7 @@
                 });
 
                 google.maps.event.addListenerOnce(map, 'idle', function() {
+                    $('#filter').prop('disabled', false);
                     let image = '/images/marker.png';
                     activations = new google.maps.Marker({
                         map: map,
@@ -112,31 +117,7 @@
                         infowindow.open(map, activations);
                         toggleBounce();
                     });
-
-                    let step = 0;
-                    let numSteps = coordinates.length - 1;
-                    let timePerStep = 2000;
-                    let interval = setInterval(function() {
-                        step += 1;
-
-                        if (step >= numSteps) {
-                            clearInterval(interval);
-                        } else {
-                            let coord = {
-                                lat: coordinates[step][0],
-                                lng: coordinates[step][1]
-                            };
-
-                            baCoordinates.push(coord);
-
-                            map.setCenter(coord);
-                            activations.setPosition(coord);
-                            baPath.setPath(baCoordinates);
-                        }
-                    }, timePerStep);
                 });
-
-                baPath.setMap(map);
 
                 google.maps.event.addListener(map, "click", function (e) {
 
@@ -196,6 +177,44 @@
                         $(this).css({opacity: '1'});
                     });
                 });
+
+                $('#filter').on('click', function() {
+                    let userId = $('#user').val();
+                    baPath.clear();
+                    clearInterval(stepAnimation);
+
+                    $.get(`/admin/tracking/${userId}`, function(response) {
+                        trackSteps(map, response, baPath);
+                    });
+                })
+            }
+
+            function trackSteps(map, coordinates, baPath) {
+                let step = 0;
+                let numSteps = coordinates.length - 1;
+                let timePerStep = 1000;
+                let baCoordinates = [];
+
+                stepAnimation = setInterval(function() {
+                    step += 1;
+
+                    if (step >= numSteps) {
+                        clearInterval(stepAnimation);
+                    } else {
+                        let coord = {
+                            lat: coordinates[step][0],
+                            lng: coordinates[step][1]
+                        };
+
+                        baCoordinates.push(coord);
+
+                        map.setCenter(coord);
+                        activations.setPosition(coord);
+                        baPath.setPath(baCoordinates);
+                    }
+                }, timePerStep);
+
+                baPath.setMap(map);
             }
 
             function toggleBounce() {
