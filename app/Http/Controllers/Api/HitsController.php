@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateHitRequest;
 use App\Models\Hit;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class HitsController extends Controller {
 
@@ -35,5 +36,16 @@ class HitsController extends Controller {
         $newHit = Hit::create($hit);
 
         return response()->json($newHit, 201);
+    }
+
+    public function byProject(Request $request, $projectId)
+    {
+        $user =  $request->user()->id;
+
+        $hits = Hit::where('user_id', $user)
+            ->where('project_id', $projectId)
+            ->get();
+
+        return response()->json($hits, 201);
     }
 }
