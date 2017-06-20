@@ -32,4 +32,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/{id}', 'Admin\UserController@show');
     });
 
+    Route::group(['prefix' => 'projects'], function () {
+        Route::get('/', 'Admin\ProjectController@index');
+        Route::get('/create', 'Admin\ProjectController@create');
+        Route::post('/create', 'Admin\ProjectController@store');
+        Route::get('/update/{id}', 'Admin\ProjectController@edit');
+        Route::post('/update/{id}', 'Admin\ProjectController@update');
+        Route::delete('/{id}', 'Admin\ProjectController@destroy');
+        Route::get('/{id}', 'Admin\ProjectController@show');
+    });
+
 });

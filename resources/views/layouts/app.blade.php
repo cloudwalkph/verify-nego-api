@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/adminlte/css/AdminLTE.css') }}">
     <link href="{{ asset('css/adminlte/css/skins/skin-black.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/selectize/selectize.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/bs/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.13/b-1.2.4/b-colvis-1.2.4/b-flash-1.2.4/b-html5-1.2.4/b-print-1.2.4/datatables.min.css"/>

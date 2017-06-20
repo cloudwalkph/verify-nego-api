@@ -4,11 +4,11 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Users
-                <small>List of user</small>
+                Projects
+                <small>List of projects</small>
             </h1>
-            <a href="/admin/users/create" class="btn btn-info" style="position: absolute; top: 10px; left: 16%">
-                <i class="fa fa-plus" ></i> ADD NEW USER
+            <a href="/admin/projects/create" class="btn btn-info" style="position: absolute; top: 10px; left: 16%">
+                <i class="fa fa-plus" ></i> ADD NEW PROJECT
             </a>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -25,27 +25,25 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>User Group</th>
+                            <th>Status</th>
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($projects as $project)
                             <tr>
-                                <td>{{ isset($user->profile) ? $user->profile->getFullNameAttribute() : 'N/A' }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>{{ ucwords($user->group->name) }}</td>
-                                <td>{{ $user->created_at->toFormattedDateString() }}</td>
+                                <td>{{ $project->name }}</td>
+                                <td>{{ ucwords($project->status) }}</td>
+                                <td>{{ $project->created_at->toFormattedDateString() }}</td>
                                 <td>
-                                    <a class="btn btn-default" href="/admin/users/{{$user->id}}">
+                                    <a class="btn btn-default" href="/admin/projects/{{$project->id}}">
                                         <i class="fa fa-search"></i> View
                                     </a>
-                                    <a class="btn btn-success" href="/admin/users/update/{{$user->id}}">
+                                    <a class="btn btn-success" href="/admin/projects/update/{{$project->id}}">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <button type="submit" id="delete" data-item="{{$user->id}}"
+                                    <button type="submit" id="delete" data-item="{{$project->id}}"
                                             class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteModal">
                                         <i class="fa fa-trash"></i> Delete
                                     </button>
@@ -66,7 +64,7 @@
             </div>
         </section>
     </div>
-    @include('admin.users.deleteModal')
+    @include('admin.projects.deleteModal')
 @endsection
 
 @section('scripts')
@@ -93,7 +91,7 @@
                         '_token': '{{ csrf_token() }}'
                     };
 
-                    $.post('/admin/users/'+ deleteId, data, function(res){
+                    $.post('/admin/projects/'+ deleteId, data, function(res){
                         console.log(res);
                         var rowSelected = $that.parent().parent();
                         table.row(rowSelected).remove().draw();
