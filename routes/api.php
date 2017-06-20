@@ -21,5 +21,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => 'auth:api'
     Route::get('/me', 'UsersController@me');
     Route::get('/events', 'UsersController@events');
     Route::post('/gps', 'UsersController@saveLocation');
-    Route::post('/hits/{userId}', 'HitsController@store');
+    Route::post('/hits/{projectId}', 'HitsController@store');
 });
