@@ -12,11 +12,6 @@ class HitsController extends Controller {
     public function store(CreateHitRequest $request, $projectId)
     {
         $input = $request->all();
-        $filename = "";
-        if ($request->hasFile('image')) {
-            $filename = uniqid().'.jpeg';
-            $path = $request->file('image')->storeAs('public', $filename);
-        }
 
         $hit = [
             'user_id'               => $request->user()->id,
@@ -29,7 +24,7 @@ class HitsController extends Controller {
             'designation'           => $input['designation'],
             'address'               => $input['address'],
             'other_details'         => isset($input['other_details']) ? $input['other_details'] : '',
-            'image'                 => $filename,
+            'image'                 => '',
             'location'              => $input['location']
         ];
 
