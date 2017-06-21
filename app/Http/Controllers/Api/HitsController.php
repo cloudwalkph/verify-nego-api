@@ -38,6 +38,25 @@ class HitsController extends Controller {
         return response()->json($newHit, 201);
     }
 
+    public function updateImage(Request $request, $hitId)
+    {
+        \Log::info($request);
+        \Log::info($request->all());
+        if (! $request->hasFile('image')) {
+            return response()->json('no image found', 400);
+        }
+
+        $filename = uniqid().'.jpeg';
+        $path = $request->file('image')->storeAs('public', $filename);
+
+        $hit = Hit::where('id', $hitId)
+            ->update([
+                'image' => $filename
+            ]);
+
+        return response()->json($hit);
+    }
+
     public function byProject(Request $request, $projectId)
     {
         $user =  $request->user()->id;
