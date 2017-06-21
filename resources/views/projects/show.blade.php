@@ -46,6 +46,7 @@
                                         <table class="table table-hover" style="margin-top: 20px">
                                             <tbody>
                                             <tr>
+                                                <th>Negotiator</th>
                                                 <th>Image</th>
                                                 <th>Name</th>
                                                 <th>Email Address</th>
@@ -56,6 +57,7 @@
                                             </tr>
                                             @foreach($hits as $hit)
                                                 <tr>
+                                                    <td>{{ $hit->user->profile->getFullNameAttribute() }}</td>
                                                     <td><img src="{{ asset('storage/'.$hit->image) }}" height="50" width="50" class="img-circle" alt=""></td>
                                                     <td>{{ $hit->name }}</td>
                                                     <td>{{ $hit->email }}</td>
