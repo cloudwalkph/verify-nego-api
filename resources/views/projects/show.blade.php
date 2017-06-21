@@ -19,9 +19,17 @@
                         <div class="panel-body">
 
                             <div class="content">
-                                <h3>Event Analytics</h3>
-                                <p>Real time Data from <strong>{{ $project->name }}</strong> activities.</p>
-                                <p style="color: #FF7300;">Last updated: {{ $project->updated_at->toFormattedDateString() }}</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3>Event Analytics</h3>
+                                        <p>Real time Data from <strong>{{ $project->name }}</strong> activities.</p>
+                                        <p style="color: #FF7300;">Last updated: {{ $project->updated_at->toFormattedDateString() }}</p>
+                                    </div>
+                                    <div class="col-md-6 text-right" style="padding-top: 25px;">
+                                        <button class="btn btn-default"><i class="fa fa-file-excel-o"></i> Export Excel</button>
+                                        <button class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Export Pdf</button>
+                                    </div>
+                                </div>
 
                                 <ul class="nav nav-tabs" id="serviceTabs">
                                     <li class="active"><a href="#event-analytics" data-toggle="tab">Graph Analytics</a></li>
