@@ -27,6 +27,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>User Group</th>
+                            <th>Mobile Number</th>
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
@@ -37,6 +38,7 @@
                                 <td>{{ isset($user->profile) ? $user->profile->getFullNameAttribute() : 'N/A' }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ ucwords($user->group->name) }}</td>
+                                <td>{{ $user->profile->mobile_number }}</td>
                                 <td>{{ $user->created_at->toFormattedDateString() }}</td>
                                 <td>
                                     <a class="btn btn-default" href="/admin/users/{{$user->id}}">
@@ -57,6 +59,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Mobile Number</th>
                             <th>Date</th>
                             <th>Action</th>
                         </tr>

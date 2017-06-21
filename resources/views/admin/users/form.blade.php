@@ -33,10 +33,19 @@
     </div>
     <div class="col-sm-12">
         <div class="form-group">
-            <label class="control-label col-sm-2" for="profile[birthdate]">Birthdate</label>
+            <label class="control-label col-sm-2" for="profile[mobile_number]">Mobile Number</label>
             <div class="col-sm-10">
-                <input class="form-control" type="date" name="profile[birthdate]" required
-                       value='{{ isset( $user->profile['birthdate'] ) ? $user->profile['birthdate'] : "" }}'/>
+                <input class="form-control" type="text" name="profile[mobile_number]"
+                       value='{{ isset( $user->profile['mobile_number'] ) ? $user->profile['mobile_number'] : "" }}'/>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="profile[landline]">Landline</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="profile[landline]"
+                       value='{{ isset( $user->profile['landline'] ) ? $user->profile['landline'] : "" }}'/>
             </div>
         </div>
     </div>
