@@ -54,6 +54,8 @@ class HitsController extends Controller {
                 'image' => $filename
             ]);
 
+        $hit = Hit::where('id', $hitId)->first();
+
         return response()->json($hit);
     }
 
