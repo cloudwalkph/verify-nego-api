@@ -26,8 +26,8 @@
                                         <p style="color: #FF7300;">Last updated: {{ $project->updated_at->toFormattedDateString() }}</p>
                                     </div>
                                     <div class="col-md-6 text-right" style="padding-top: 25px;">
-                                        <button class="btn btn-default"><i class="fa fa-file-excel-o"></i> Export Excel</button>
-                                        <button class="btn btn-default"><i class="fa fa-file-pdf-o"></i> Export Pdf</button>
+                                        <button class="btn btn-default hide"><i class="fa fa-file-excel-o"></i> Export Excel</button>
+                                        <button class="btn btn-default" onclick="frames['eventFrame'].print()"><i class="fa fa-file-pdf-o"></i> Export Pdf</button>
                                     </div>
                                 </div>
 
@@ -88,6 +88,7 @@
             </div>
         </div>
     </div>
+    <iframe src="/projects/{{ $project->id }}/preview" name="eventFrame" style="width: 0; height: 0"></iframe>
 @endsection
 
 @section('scripts')

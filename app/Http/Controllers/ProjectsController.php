@@ -53,18 +53,12 @@ class ProjectsController extends Controller
         return $result;
     }
 
-    private function parseAnswers($hits)
+    public function preview(Request $request, $projectId)
     {
-        $result = [];
-        foreach ($hits as $hit) {
-            $hit['hit_timestamp'] = Carbon::createFromTimestamp(strtotime($hit['hit_timestamp']))->minute(0)
-                ->toDateTimeString();
+        $project = Project::find($projectId);
+        $hits = Hit::where('project_id', $projectId)
+            ->get();
 
-            foreach ($hit['answers'] as $answer) {
-                $result[] = $answer;
-            }
-        }
-
-        return $result;
+        return view('projects.print.event', compact('project', 'hits'));
     }
 }
