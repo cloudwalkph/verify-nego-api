@@ -35,7 +35,8 @@
                                 <h5>E-mail Address: {{ $user->email }}</h5>
                                 <h5>First Name: {{ $user->profile->first_name }}</h5>
                                 <h5>Last Name: {{ $user->profile->last_name }}</h5>
-                                <h5>Birthdate: {{ $user->profile->birthdate }}</h5>
+                                <h5>Mobile Number: {{ $user->profile->mobile_number }}</h5>
+                                <h5>Landline: {{ $user->profile->landline }}</h5>
                                 <h5>Gender: {{ $user->profile->gender }}</h5>
                                 <h5>Date Created: {{ $user->created_at->toFormattedDateString() }}</h5>
                                 <h5>Last Updated: {{ $user->updated_at->toFormattedDateString() }}</h5>

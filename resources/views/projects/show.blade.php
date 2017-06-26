@@ -19,9 +19,17 @@
                         <div class="panel-body">
 
                             <div class="content">
-                                <h3>Event Analytics</h3>
-                                <p>Real time Data from <strong>{{ $project->name }}</strong> activities.</p>
-                                <p style="color: #FF7300;">Last updated: {{ $project->updated_at->toFormattedDateString() }}</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3>Event Analytics</h3>
+                                        <p>Real time Data from <strong>{{ $project->name }}</strong> activities.</p>
+                                        <p style="color: #FF7300;">Last updated: {{ $project->updated_at->toFormattedDateString() }}</p>
+                                    </div>
+                                    <div class="col-md-6 text-right" style="padding-top: 25px;">
+                                        <button class="btn btn-default hide"><i class="fa fa-file-excel-o"></i> Export Excel</button>
+                                        <button class="btn btn-default" onclick="frames['eventFrame'].print()"><i class="fa fa-file-pdf-o"></i> Export Pdf</button>
+                                    </div>
+                                </div>
 
                                 <ul class="nav nav-tabs" id="serviceTabs">
                                     <li class="active"><a href="#event-analytics" data-toggle="tab">Graph Analytics</a></li>
@@ -46,6 +54,7 @@
                                         <table class="table table-hover" style="margin-top: 20px">
                                             <tbody>
                                             <tr>
+                                                <th>Negotiator</th>
                                                 <th>Image</th>
                                                 <th>Name</th>
                                                 <th>Email Address</th>
@@ -56,6 +65,7 @@
                                             </tr>
                                             @foreach($hits as $hit)
                                                 <tr>
+                                                    <td>{{ $hit->user->profile->getFullNameAttribute() }}</td>
                                                     <td><img src="{{ asset('storage/'.$hit->image) }}" height="50" width="50" class="img-circle" alt=""></td>
                                                     <td>{{ $hit->name }}</td>
                                                     <td>{{ $hit->email }}</td>
@@ -78,6 +88,7 @@
             </div>
         </div>
     </div>
+    <iframe src="/projects/{{ $project->id }}/preview" name="eventFrame" style="width: 0; height: 0"></iframe>
 @endsection
 
 @section('scripts')

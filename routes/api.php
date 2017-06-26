@@ -23,4 +23,5 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'middleware' => 'auth:api'
     Route::get('/hits/{projectId}', 'HitsController@byProject');
     Route::post('/gps', 'UsersController@saveLocation');
     Route::post('/hits/{projectId}', 'HitsController@store');
+    Route::post('/hits/images/{hitId}', 'HitsController@updateImage');
 });
