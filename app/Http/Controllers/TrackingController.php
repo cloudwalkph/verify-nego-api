@@ -34,9 +34,20 @@ class TrackingController extends Controller
         return view('admin.tracking.show',compact('users'));
     }
 
-    public function getLocations($userId)
+    public function getLocations(Request $request, $userId)
     {
-        $locations = UserLocation::where('user_id', $userId)->get();
+        $startDate = Carbon::today('Asia/Manila')->toDateTimeString();
+        $endDate = Carbon::today('Asia/Manila')->toDateTimeString();
+
+        if ($request->has('start') && $request->has('end')) {
+            $startDate = Carbon::createFromTimestamp(strtotime($request->get('start')))->toDateTimeString();
+            $endDate = Carbon::createFromTimestamp(strtotime($request->get('end')))->toDateTimeString();
+        }
+
+        $locations = UserLocation::where('user_id', $userId)
+            ->where('created_at', '>=', $startDate)
+            ->where('created_at', '<=', $endDate)
+            ->get();
 
         $result = [];
         foreach ($locations as $location) {
