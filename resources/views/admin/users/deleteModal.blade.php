@@ -1,7 +1,9 @@
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-
+            <div class="modal-header text-center">
+                <p>DELETE USER</p>
+            </div>
             <div class="modal-body">
                 <p>Do you want to delete this user?</p>
             </div>
