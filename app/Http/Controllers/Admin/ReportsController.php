@@ -68,7 +68,7 @@ class ReportsController extends Controller
         }
 
         $locations = $this->getLocationsPerHour($startDate, $endDate, $userId);
-
+dd($locations);
         return view('admin.reports.print', compact('user', 'locations'));
     }
 
@@ -84,6 +84,11 @@ class ReportsController extends Controller
 
         $result = [];
         foreach ($locations as $location) {
+            // Reverse geocoding
+            $location[0]['formatted_address'] = app('geocoder')
+                ->reverse($location[0]->lat, $location[0]->lng)
+                ->get();
+
             $result[] = $location[0];
         }
 
