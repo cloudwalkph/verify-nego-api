@@ -83,7 +83,7 @@
                 $that = $(this);
             });
 
-            $('.deleteBtn').on('click', function(e){
+            $(document).on('click', '.deleteBtn', function() {
                 console.log(deleteId);
                 if (deleteId) {
                     var data = {
