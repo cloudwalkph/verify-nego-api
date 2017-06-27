@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use App\Models\UserGroup;
+use App\Models\UserLocation;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -117,5 +119,41 @@ class UserController extends Controller
         $user->delete();
 
         return redirect('admin/users');
+    }
+
+    public function importGPSData(Request $request)
+    {
+        if (! $request->hasFile('gps_file')) {
+            $request->session()->flash('error', 'No file to upload');
+
+            return redirect()->back();
+        }
+
+        $results = [];
+        \Excel::load($request->file('gps_file'), function($reader) use (&$results, $request) {
+
+            // reader methods
+            $sheets = $reader->all();
+
+            foreach ($sheets->toArray() as $sheet) {
+                foreach ($sheet as $location) {
+                    $latlng = explode(',', $location['llc']);
+
+                    $data = [
+                        'user_id'   => $request->get('user_id'),
+                        'lat'   => $latlng[0],
+                        'lng'   => $latlng[1],
+                        'created_at' => Carbon::createFromTimestamp(strtotime($location['time']))->toDateTimeString()
+                    ];
+
+                    $results[] = $data;
+
+                    // Create Data
+                    UserLocation::create($data);
+                }
+            }
+        });
+
+        return redirect()->back();
     }
 }

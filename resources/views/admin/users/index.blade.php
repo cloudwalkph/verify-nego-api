@@ -93,6 +93,11 @@
                 $that = $(this);
             });
 
+            $(document).on('click', '.importItem', function() {
+                let userId = $(this).data('item');
+                $('#userId').val(userId);
+            });
+
             $('.deleteBtn').on('click', function(e){
                 console.log(deleteId);
                 if (deleteId) {

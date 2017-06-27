@@ -4,19 +4,22 @@
             <div class="modal-header text-center">
                 <p>IMPORT GPS DATA</p>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="file">Select excel file to import: </label>
-                        <input type="file" class="form-control" name="gps_file">
+            <form action="/admin/users/import" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="user_id" id="userId">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="file">Select excel file to import: </label>
+                            <input type="file" class="form-control" name="gps_file">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success importBtn" data-toggle="modal"
-                        data-dismiss="modal" data-target="#myModal">Import</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success importBtn">Import</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

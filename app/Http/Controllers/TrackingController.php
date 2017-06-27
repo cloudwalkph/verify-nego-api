@@ -41,7 +41,7 @@ class TrackingController extends Controller
      */
     public function showVehicles()
     {
-        $users = User::where('user_group_id', '3')->get();
+        $users = User::where('user_group_id', '4')->get();
 
         return view('admin.tracking.show',compact('users'));
     }
