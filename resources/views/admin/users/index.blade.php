@@ -47,9 +47,13 @@
                                     <a class="btn btn-success" href="/admin/users/update/{{$user->id}}">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <button type="submit" id="delete" data-item="{{$user->id}}"
+                                    <button type="button" id="delete" data-item="{{$user->id}}"
                                             class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteModal">
                                         <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                    <button type="button" id="import" data-item="{{$user->id}}"
+                                            class="btn btn-primary importItem" data-toggle="modal" data-target="#importModal">
+                                        <i class="fa fa-map-marker"></i> Import Gps Data
                                     </button>
                                 </td>
                             </tr>
@@ -70,6 +74,7 @@
         </section>
     </div>
     @include('admin.users.deleteModal')
+    @include('admin.users.importModal')
 @endsection
 
 @section('scripts')
