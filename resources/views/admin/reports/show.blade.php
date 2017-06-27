@@ -42,7 +42,7 @@
                                     <thead>
                                     <tr style="background-color: #FF7300; color: white;">
                                         <th>Date</th>
-                                        <th>Brand Ambassador</th>
+                                        <th>User</th>
                                         <th>Date and Time</th>
                                         <th>Location</th>
                                     </tr>
