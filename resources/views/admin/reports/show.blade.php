@@ -67,5 +67,5 @@
             </div>
         </section>
     </div>
-    <iframe src="/admin/reports/preview/{{ $user->id }}?start={{ $_GET["start"] }}&end={{ $_GET["end"] }}" name="gpsReport" style="width: 0; height: 0"></iframe>
+    <iframe src="/admin/reports/preview/{{ $user->id }}?start={{ $startDate }}&end={{ $endDate }}" name="gpsReport" style="width: 0; height: 0"></iframe>
 @endsection
