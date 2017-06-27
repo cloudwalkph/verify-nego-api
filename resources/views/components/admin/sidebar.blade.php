@@ -22,6 +22,9 @@
             <li>
                 <a href="/admin/users"><i class="fa fa-users"></i><span> Users</span></a>
             </li>
+            <li>
+                <a href="/admin/reports"><i class="fa fa-bar-chart-o"></i><span> Reports</span></a>
+            </li>
 
         </ul>
     </section>
