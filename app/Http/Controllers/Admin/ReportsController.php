@@ -90,11 +90,9 @@ dd($locations);
                 ->reverse($location[0]->lat, $location[0]->lng)
                 ->get();
 
-            return $address->first();
-
             $formatter = new StringFormatter();
 
-            $location[0]['formatted_address'] = $formatter->format($address, '%S %n, %z %L');;
+            $location[0]['formatted_address'] = $formatter->format($address->first(), '%S %n, %z %L');;
 
             $result[] = $location[0];
         }
