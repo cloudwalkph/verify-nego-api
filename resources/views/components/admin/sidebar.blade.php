@@ -13,7 +13,7 @@
                 <a href="#"><i class="fa fa-map-marker"></i><span>Tracking</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="/admin/tracking/negotiators"><i class="fa fa-handshake-o"></i><span> Negotiators</span></a></li>
-                    <li><a href="/admin/tracking/vehicles"><i class="fa fa-truck"></i><span> Trucks</span></a></li>
+                    <li><a href="/admin/tracking/vehicles"><i class="fa fa-truck"></i><span> Vehicles</span></a></li>
                 </ul>
             </li>
             <li>

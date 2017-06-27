@@ -69,7 +69,7 @@ class ReportsController extends Controller
             ->where('user_id', $userId)
             ->get()
             ->groupBy(function($d) {
-                return Carbon::parse($d->created_at)->format('H');
+                return Carbon::parse($d->created_at)->format('Y-m-d H');
             });
 
         $result = [];
