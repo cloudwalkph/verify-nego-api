@@ -34,7 +34,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ ucwords($user->group->name) }}</td>
                                 <td>
-                                    <button type="submit" id="delete" data-item="{{$user->id}}"
+                                    <button type="submit" id="printGps" data-item="{{$user->id}}"
                                             class="btn btn-default" data-toggle="modal" data-target="#selectDate">
                                         <i class="fa fa-file-pdf-o"></i> Print Gps Report
                                     </button>
@@ -61,7 +61,32 @@
     <script type="text/javascript">
 
         $(function() {
-            $('#userTable').DataTable();
+
+            let startDate = '', endDate = '';
+
+            $('input[name="daterange"]').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+            }, function(start, end, label) {
+                console.log("A new date range was chosen: " + start.format('YYYY-MM-DD HH:mm') + ' to ' + end.format('YYYY-MM-DD HH:mm'));
+                startDate = start.format('YYYY-MM-DD HH:mm');
+                endDate = end.format('YYYY-MM-DD HH:mm');
+            });
+
+            var userId;
+
+            var table = $('#userTable').DataTable();
+
+            var $that;
+
+            $(document).on('click', '#printGps', function(e){
+                userId = $(this).attr('data-item');
+                $that = $(this);
+            });
+
+            $(document).on('click', '.confirmBtn', function(e){
+                location.href = "/admin/reports/"+ userId;
+            });
         });
 
     </script>

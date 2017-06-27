@@ -35,4 +35,18 @@ class ReportsController extends Controller
 
         return view('admin.reports.show', compact('user'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function preview($id)
+    {
+        $user = User::where('id', $id)
+            ->with('profile')->first();
+
+        return view('admin.reports.print', compact('user'));
+    }
 }
