@@ -46,6 +46,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>User Group</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -84,7 +85,11 @@
             });
 
             $(document).on('click', '.confirmBtn', function(e){
-                location.href = `/admin/reports/${userId}?start=${startDate}&end=${endDate}`;
+                if (! startDate) {
+                    location.href = `/admin/reports/${userId}`;
+                } else {
+                    location.href = `/admin/reports/${userId}?start=${startDate}&end=${endDate}`;
+                }
             });
         });
 

@@ -69,7 +69,7 @@ class TrackingController extends Controller
     public function getLocations(Request $request, $userId)
     {
         $startDate = Carbon::today('Asia/Manila')->setTime(0,0,0)->toDateTimeString();
-        $endDate = Carbon::today('Asia/Manila')->setTime(24,0,0)->toDateTimeString();
+        $endDate = Carbon::today('Asia/Manila')->setTime(23,0,0)->toDateTimeString();
 
         if ($request->has('start') && $request->has('end')) {
             $startDate = Carbon::createFromTimestamp(strtotime($request->get('start')))->toDateTimeString();

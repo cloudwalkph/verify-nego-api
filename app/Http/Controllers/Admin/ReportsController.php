@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use App\Models\UserGroup;
+use App\Models\UserLocation;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReportsController extends Controller
@@ -28,12 +30,22 @@ class ReportsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $userId)
     {
-        $user = User::where('id', $id)
+        $user = User::where('id', $userId)
             ->with('profile')->first();
 
-        return view('admin.reports.show', compact('user'));
+        $startDate = Carbon::today('Asia/Manila')->setTime(0,0,0)->toDateTimeString();
+        $endDate = Carbon::today('Asia/Manila')->setTime(23,0,0)->toDateTimeString();
+
+        if ($request->has('start') && $request->has('end')) {
+            $startDate = Carbon::createFromTimestamp(strtotime($request->get('start')))->toDateTimeString();
+            $endDate = Carbon::createFromTimestamp(strtotime($request->get('end')))->toDateTimeString();
+        }
+
+        $locations = $this->getLocationsPerHour($startDate, $endDate, $userId);
+
+        return view('admin.reports.show', compact('user', 'locations'));
     }
 
     /**
@@ -48,5 +60,23 @@ class ReportsController extends Controller
             ->with('profile')->first();
 
         return view('admin.reports.print', compact('user'));
+    }
+
+    private function getLocationsPerHour($startDate, $endDate, $userId)
+    {
+        $locations = UserLocation::where('created_at', '>=', $startDate)
+            ->where('created_at', '<=', $endDate)
+            ->where('user_id', $userId)
+            ->get()
+            ->groupBy(function($d) {
+                return Carbon::parse($d->created_at)->format('H');
+            });
+
+        $result = [];
+        foreach ($locations as $location) {
+            $result[] = $location[0];
+        }
+
+        return $result;
     }
 }
