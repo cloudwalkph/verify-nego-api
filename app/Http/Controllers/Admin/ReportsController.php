@@ -89,11 +89,11 @@ class ReportsController extends Controller
             $address = app('geocoder')
                 ->reverse($location[0]->lat, $location[0]->lng)
                 ->limit(1)
-                ->get(0);
+                ->get();
 
             $formatter = new StringFormatter();
 
-            $location[0]['formatted_address'] = $formatter->format($address, '%S %n, %z %L');;
+            $location[0]['formatted_address'] = $formatter->format($address[0], '%S %n, %z %L');;
 
             $result[] = $location[0];
         }
