@@ -24,8 +24,10 @@ Route::get('/projects/{projectId}/preview', 'ProjectsController@preview');
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::get('/tracking', 'TrackingController@show');
+    Route::get('/tracking/negotiators', 'TrackingController@showNegotiators');
+    Route::get('/tracking/vehicles', 'TrackingController@showVehicles');
     Route::get('/tracking/{userId}', 'TrackingController@getLocations');
+    Route::get('/tracking/{userId}/last', 'TrackingController@getLastLocations');
     Route::get('/reports/gps/{userId}', 'ReportsController@getLocationsPerHour');
 
     Route::group(['prefix' => 'users'], function () {

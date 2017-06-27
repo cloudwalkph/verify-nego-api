@@ -27,11 +27,43 @@ class TrackingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function showNegotiators()
     {
         $users = User::where('user_group_id', '3')->get();
 
         return view('admin.tracking.show',compact('users'));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showVehicles()
+    {
+        $users = User::where('user_group_id', '3')->get();
+
+        return view('admin.tracking.show',compact('users'));
+    }
+
+    public function getLastLocations($userId)
+    {
+        $location = UserLocation::where('user_id', $userId)
+            ->orderBy('created_at', 'DESC')
+            ->first();
+
+        $user = User::where('id', $userId)
+            ->first();
+
+        $data = [
+            "user"  => $user->profile->first_name . " " . $user->profile->last_name,
+            "coordinates" => [
+                "lat" => $location->lat,
+                "lng" => $location->lng
+            ]
+        ];
+
+        return response()->json($data, 200);
     }
 
     public function getLocations(Request $request, $userId)
@@ -49,9 +81,15 @@ class TrackingController extends Controller
             ->where('created_at', '<=', $endDate)
             ->get();
 
-        $result = [];
+        $user = User::where('id', $userId)
+            ->first();
+
+        $result = [
+            "user"  => $user->profile->first_name . " " . $user->profile->last_name,
+            "coordinates"   => []
+        ];
         foreach ($locations as $location) {
-            $result[] = [$location->lat, $location->lng];
+            $result['coordinates'][] = [$location->lat, $location->lng];
         }
 
         return response()->json($result, 200);

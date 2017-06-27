@@ -33,6 +33,13 @@
                     <button class="btn btn-primary btn-block" type="button" id="filter" disabled>Submit</button>
                 </div>
             </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn-info btn-block" type="button" id="lastKnownLocation"><i class="fa fa-crosshairs"></i> Get User's Last Known Location</button>
+                </div>
+            </div>
+            <br>
             <div id="map"></div>
         </section>
     </div>
@@ -166,10 +173,39 @@
 
                 clearInterval(stepAnimation);
 
-                $.get(`/admin/tracking/${userId}?start=${startDate}&end=${endDate}`, function(response) {
+                let url = `/admin/tracking/${userId}?start=${startDate}&end=${endDate}`;
+                if (! startDate) {
+                    url = `/admin/tracking/${userId}`;
+                }
+
+                $.get(url, function(response) {
                     $('#filter').prop('disabled', false);
 
-                    trackSteps(map, response, baPath);
+                    trackSteps(map, response.coordinates, baPath);
+                });
+            })
+
+            $('#lastKnownLocation').on('click', function() {
+                let userId = $('#user').val();
+                $(this).prop('disabled', true);
+
+                let url = `/admin/tracking/${userId}/last`;
+
+                $.get(url, function(response) {
+                    $('#lastKnownLocation').prop('disabled', false);
+
+                    contentString = '<div id="iw-container">' +
+                        '<div class="iw-title">Negotiator</div>' +
+                        '<div class="iw-content">' +
+                        `<div class="iw-subTitle">${response.user}</div>` +
+                        '</div>' +
+                        '<div class="iw-bottom-gradient"></div>' +
+                        '</div>';
+
+                    infowindow.setContent(contentString);
+
+                    activations.setPosition(response.coordinates);
+                    map.setCenter(response.coordinates);
                 });
             })
         }
