@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/tracking', 'TrackingController@show');
     Route::get('/tracking/{userId}', 'TrackingController@getLocations');
+    Route::get('/reports/gps/{userId}', 'ReportsController@getLocationsPerHour');
 
     Route::group(['prefix' => 'users'], function () {
         Route::get('/', 'Admin\UserController@index');
