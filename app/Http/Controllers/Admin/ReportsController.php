@@ -68,7 +68,7 @@ class ReportsController extends Controller
         }
 
         $locations = $this->getLocationsPerHour($startDate, $endDate, $userId);
-
+dd($locations);
         return view('admin.reports.print', compact('user', 'locations', 'startDate', 'endDate'));
     }
 
