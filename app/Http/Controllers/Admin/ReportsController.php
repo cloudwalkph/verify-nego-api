@@ -88,9 +88,9 @@ dd($locations);
             // Reverse geocoding
             $address = app('geocoder')
                 ->reverse($location[0]->lat, $location[0]->lng)
-                ->first();
+                ->get();
 
-            return $address;
+            return $address->first();
 
             $formatter = new StringFormatter();
 
