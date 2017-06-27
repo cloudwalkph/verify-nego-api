@@ -85,9 +85,13 @@ class ReportsController extends Controller
         $result = [];
         foreach ($locations as $location) {
             // Reverse geocoding
-            $location[0]['formatted_address'] = app('geocoder')
+            $address = app('geocoder')
                 ->reverse($location[0]->lat, $location[0]->lng)
                 ->get();
+
+            $location[0]['formatted_address'] = $address->addresses[0]->streetNumber . " "
+                . $address->addresses[0]->streetName . ", "
+                . $address->addresses[0]->locality;
 
             $result[] = $location[0];
         }

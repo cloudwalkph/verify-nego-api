@@ -77,7 +77,7 @@
                                 <td>{{ $location->created_at->toFormattedDateString() }}</td>
                                 <td>{{ $location->user->profile->full_name }}</td>
                                 <td>{{ $location->created_at }}</td>
-                                <td>{{ $location->lat }}, {{ $location->lng }}</td>
+                                <td>{{ $location->formatted_address }}</td>
                             </tr>
                         @endforeach
                         </tbody>
