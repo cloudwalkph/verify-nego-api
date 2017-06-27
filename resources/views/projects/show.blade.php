@@ -26,7 +26,7 @@
                                         <p style="color: #FF7300;">Last updated: {{ $project->updated_at->toFormattedDateString() }}</p>
                                     </div>
                                     <div class="col-md-6 text-right" style="padding-top: 25px;">
-                                        <button class="btn btn-default hide"><i class="fa fa-file-excel-o"></i> Export Excel</button>
+                                        <a href="/projects/{{ $project->id }}/export" class="btn btn-default"><i class="fa fa-file-excel-o"></i> Export Excel</a>
                                         <button class="btn btn-default" onclick="frames['eventFrame'].print()"><i class="fa fa-file-pdf-o"></i> Export Pdf</button>
                                     </div>
                                 </div>

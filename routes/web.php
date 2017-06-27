@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/projects/{projectId}', 'ProjectsController@show');
 Route::get('/projects/{projectId}/preview', 'ProjectsController@preview');
+Route::get('/projects/{projectId}/export', 'ProjectsController@export');
 
 Route::group(['prefix' => 'admin'], function () {
 
