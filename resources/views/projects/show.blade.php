@@ -95,7 +95,8 @@
 
     <script type="text/javascript">
         (function() {
-            let hits = JSON.parse('{!! json_encode($hits) !!}');
+            {{--let hits = JSON.parse('{!! json_encode($hits) !!}');--}}
+            let hits = [];
 
             // Load the Visualization API and the corechart package.
             google.charts.load('current', {'packages':['corechart']});
@@ -104,9 +105,13 @@
             google.charts.setOnLoadCallback(drawCharts);
 
             function drawCharts() {
-                drawLineChart();
-                drawPieChart();
-                drawBarChart();
+                $.get(`${location.href}?ajax=true`, function(response) {
+                    hits = response;
+
+                    drawLineChart();
+                    drawPieChart();
+                    drawBarChart();
+                });
             }
 
             function createDataForTimeline() {

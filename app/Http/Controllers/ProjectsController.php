@@ -33,6 +33,10 @@ class ProjectsController extends Controller
 
         $hits = $this->parseHits($hits);
 
+        if ($request->has('ajax') && $request->get('ajax')) {
+            return response()->json($hits, 200);
+        }
+
 
         return view('projects.show', compact('project', 'hits'));
     }
