@@ -48,4 +48,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/{id}', 'Admin\ProjectController@show');
     });
 
+    Route::group(['prefix' => 'reports'], function () {
+        Route::get('/', 'Admin\ReportsController@index');
+        Route::get('/{id}', 'Admin\ReportsController@show');
+    });
+
 });
