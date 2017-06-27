@@ -32,7 +32,7 @@
                             </div>
                             <div class="col-md-6" style="margin-top: 15px">
                                 <h5>Coverage:</h5>
-                                <p class="text-primary"></p>
+                                <p class="text-primary">{{ $_GET["start"] }} - {{ $_GET["end"] }}</p>
                             </div>
                             <div class="col-md-12"><hr></div>
 
@@ -67,5 +67,5 @@
             </div>
         </section>
     </div>
-    <iframe src="/admin/reports/{{ $user->id }}/preview" name="gpsReport" style="width: 0; height: 0"></iframe>
+    <iframe src="/admin/reports/preview/{{ $user->id }}?start={{ $_GET["start"] }}&end={{ $_GET["end"] }}" name="gpsReport" style="width: 0; height: 0"></iframe>
 @endsection

@@ -6,6 +6,9 @@
             vertical-align: middle !important;
             font-size: 11px !important;
         }
+        .text-primary {
+            color: #FF7300 !important;
+        }
         @media print {
             tr.tableheader {
                 background-color: #FF7300 !important;
@@ -51,100 +54,32 @@
                 <div class="col-md-6 col-xs-12">
                     <h2>{{ $user->profile->getFullNameAttribute() }}</h2>
                 </div>
-                <div class="col-md-6 col-xs-12" style="margin-top: 15px">
+                <div class="col-md-6" style="margin-top: 15px">
                     <h5>Coverage:</h5>
-                    <p class="text-primary"></p>
+                    <p class="text-primary" >{{ $_GET["start"] }} - {{ $_GET["end"] }}</p>
                 </div>
-
-                <div class="col-md-12 col-xs-12"><hr></div>
+                <div class="col-md-12"><hr></div>
 
                 <div class="col-md-12">
-                    <h3>ACTIVITY DETAIL REPORT:</h3>
+                    <h2>ACTIVITY DETAIL REPORT:</h2>
                     <table class="table table-bordered">
                         <thead>
-                            <tr class="tableheader" style="background-color: #FF7300; color: white;">
-                                <th class="hide">Tracker ID</th>
-                                <th>Date</th>
-                                <th>Brand Ambassador</th>
-                                <th>Time</th>
-                                <th>Location</th>
-                                <th class="hide">Time Duration</th>
-                                <th class="hide">Logout Time</th>
-                            </tr>
+                        <tr class="tableheader" style="background-color: #FF7300; color: white;">
+                            <th>Date</th>
+                            <th>User</th>
+                            <th>Date and Time</th>
+                            <th>Location</th>
+                        </tr>
                         </thead>
                         <tbody>
+                        @foreach ($locations as $location)
                             <tr>
-                                <td class="hide">Verify 001</td>
-                                <td>05/30/17</td>
-                                <td>Rina Martez</td>
-                                <td>05/30/17 07:24:20 AM</td>
-                                <td>Cafediem</td>
-                                <td class="hide">05:08:03</td>
-                                <td class="hide">05/09/17 05:25:03 PM</td>
+                                <td>{{ $location->created_at->toFormattedDateString() }}</td>
+                                <td>{{ $location->user->profile->full_name }}</td>
+                                <td>{{ $location->created_at }}</td>
+                                <td>{{ $location->lat }}, {{ $location->lng }}</td>
                             </tr>
-                            <tr>
-                                <td class="hide">Verify 001</td>
-                                <td>05/30/17</td>
-                                <td>Rina Martez</td>
-                                <td>05/30/17 07:32:08 AM</td>
-                                <td>Kamuning Road</td>
-                                <td class="hide">05:08:03</td>
-                                <td class="hide">05/09/17 05:25:03 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="hide">Verify 001</td>
-                                <td>05/30/17</td>
-                                <td>Rina Martez</td>
-                                <td>05/30/17 07:41:29 AM</td>
-                                <td>Epifanio de los Santos Ave</td>
-                                <td class="hide">05:08:03</td>
-                                <td class="hide">05/09/17 05:25:03 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="hide">Verify 001</td>
-                                <td>05/30/17</td>
-                                <td>Rina Martez</td>
-                                <td>05/30/17 07:49:39 AM</td>
-                                <td>Kamias Road</td>
-                                <td class="hide">05:08:03</td>
-                                <td class="hide">05/09/17 05:25:03 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="hide">Verify 001</td>
-                                <td>05/30/17</td>
-                                <td>Rina Martez</td>
-                                <td>05/30/17 07:57:02 AM</td>
-                                <td>Buger King Kamias</td>
-                                <td class="hide">05:08:03</td>
-                                <td class="hide">05/09/17 05:25:03 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="hide">Verify 001</td>
-                                <td>05/30/17</td>
-                                <td>Rina Martez</td>
-                                <td>05/30/17 08:04:47 AM</td>
-                                <td>Shell Kasing-kasing</td>
-                                <td class="hide">05:08:03</td>
-                                <td class="hide">05/09/17 05:25:03 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="hide">Verify 001</td>
-                                <td>05/30/17</td>
-                                <td>Rina Martez</td>
-                                <td>05/30/17 08:06:32 AM</td>
-                                <td>Shell Kasing-kasing</td>
-                                <td class="hide">05:08:03</td>
-                                <td class="hide">05/09/17 05:25:03 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="hide">Verify 001</td>
-                                <td>05/30/17</td>
-                                <td>Rina Martez</td>
-                                <td>05/30/17 08:09:17 AM</td>
-                                <td>Shell Kasing-kasing</td>
-                                <td class="hide">05:08:03</td>
-                                <td class="hide">05/09/17 05:25:03 PM</td>
-                            </tr>
+                        @endforeach
                         </tbody>
 
                     </table>

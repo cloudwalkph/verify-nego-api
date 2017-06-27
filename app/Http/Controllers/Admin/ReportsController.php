@@ -54,12 +54,22 @@ class ReportsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function preview($id)
+    public function preview(Request $request, $userId)
     {
-        $user = User::where('id', $id)
+        $user = User::where('id', $userId)
             ->with('profile')->first();
 
-        return view('admin.reports.print', compact('user'));
+        $startDate = Carbon::today('Asia/Manila')->setTime(0,0,0)->toDateTimeString();
+        $endDate = Carbon::today('Asia/Manila')->setTime(23,0,0)->toDateTimeString();
+
+        if ($request->has('start') && $request->has('end')) {
+            $startDate = Carbon::createFromTimestamp(strtotime($request->get('start')))->toDateTimeString();
+            $endDate = Carbon::createFromTimestamp(strtotime($request->get('end')))->toDateTimeString();
+        }
+
+        $locations = $this->getLocationsPerHour($startDate, $endDate, $userId);
+
+        return view('admin.reports.print', compact('user', 'locations'));
     }
 
     private function getLocationsPerHour($startDate, $endDate, $userId)

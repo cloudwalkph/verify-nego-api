@@ -53,7 +53,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'reports'], function () {
         Route::get('/', 'Admin\ReportsController@index');
         Route::get('/{id}', 'Admin\ReportsController@show');
-        Route::get('/{id}/preview', 'Admin\ReportsController@preview');
+        Route::get('/preview/{id}', 'Admin\ReportsController@preview');
     });
 
 });
