@@ -46,6 +46,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>User Group</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
@@ -73,19 +74,22 @@
                 endDate = end.format('YYYY-MM-DD HH:mm');
             });
 
-            var userId;
+            let userId;
 
-            var table = $('#userTable').DataTable();
+            let table = $('#userTable').DataTable();
 
-            var $that;
+            let $that;
 
             $(document).on('click', '#printGps', function(e){
-                userId = $(this).attr('data-item');
-                $that = $(this);
+                userId = $(this).data('item');
             });
 
             $(document).on('click', '.confirmBtn', function(e){
-                location.href = "/admin/reports/"+ userId;
+                if (! startDate) {
+                    location.href = `/admin/reports/${userId}`;
+                } else {
+                    location.href = `/admin/reports/${userId}?start=${startDate}&end=${endDate}`;
+                }
             });
         });
 
