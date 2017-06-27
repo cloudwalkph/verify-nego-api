@@ -8,6 +8,7 @@ use App\Models\UserGroup;
 use App\Models\UserLocation;
 use App\User;
 use Carbon\Carbon;
+use Geocoder\Formatter\StringFormatter;
 use Illuminate\Http\Request;
 
 class ReportsController extends Controller
@@ -85,9 +86,13 @@ class ReportsController extends Controller
         $result = [];
         foreach ($locations as $location) {
             // Reverse geocoding
-            $location[0]['formatted_address'] = app('geocoder')
+            $address = app('geocoder')
                 ->reverse($location[0]->lat, $location[0]->lng)
                 ->get();
+
+            $formatter = new StringFormatter();
+
+            $location[0]['formatted_address'] = $formatter->format($address->first(), '%S %n, %z %L');;
 
             $result[] = $location[0];
         }
