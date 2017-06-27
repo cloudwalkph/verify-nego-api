@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-md-6" style="margin-top: 15px">
                     <h5>Coverage:</h5>
-                    <p class="text-primary" >{{ $_GET["start"] }} - {{ $_GET["end"] }}</p>
+                    <p class="text-primary" >{{ $startDate }} - {{ $endDate }}</p>
                 </div>
                 <div class="col-md-12"><hr></div>
 

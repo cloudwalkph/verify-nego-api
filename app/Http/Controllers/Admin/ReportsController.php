@@ -45,7 +45,7 @@ class ReportsController extends Controller
 
         $locations = $this->getLocationsPerHour($startDate, $endDate, $userId);
 
-        return view('admin.reports.show', compact('user', 'locations'));
+        return view('admin.reports.show', compact('user', 'locations', 'startDate', 'endDate'));
     }
 
     /**
