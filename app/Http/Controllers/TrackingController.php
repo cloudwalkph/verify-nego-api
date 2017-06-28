@@ -46,6 +46,13 @@ class TrackingController extends Controller
         return view('admin.tracking.show',compact('users'));
     }
 
+    public function showCoreGroups()
+    {
+        $users = User::where('user_group_id', '5')->get();
+
+        return view('admin.tracking.show',compact('users'));
+    }
+
     public function getLastLocations($userId)
     {
         $location = UserLocation::where('user_id', $userId)

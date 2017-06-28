@@ -14,6 +14,7 @@
                 <ul class="treeview-menu">
                     <li><a href="/admin/tracking/negotiators"><i class="fa fa-handshake-o"></i><span> Negotiators</span></a></li>
                     <li><a href="/admin/tracking/vehicles"><i class="fa fa-truck"></i><span> Vehicles</span></a></li>
+                    <li><a href="/admin/tracking/core-groups"><i class="fa fa-truck"></i><span> Core Group</span></a></li>
                 </ul>
             </li>
             <li>
