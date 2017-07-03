@@ -14,7 +14,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success confirmBtn" data-toggle="modal"
+                <button type="button" class="btn btn-success confirmBtn" data-toggle="modal"
                         data-dismiss="modal" data-target="#myModal">Confirm</button>
             </div>
         </div>
