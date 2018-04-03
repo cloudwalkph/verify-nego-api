@@ -57,9 +57,9 @@
                                                 <th>Negotiator</th>
                                                 <th>Image</th>
                                                 <th>Name</th>
-                                                <th>Email Address</th>
-                                                <th>Contact Number</th>
-                                                <th>School</th>
+                                                {{--<th>Email Address</th>--}}
+                                                {{--<th>Contact Number</th>--}}
+                                                <th>Store</th>
                                                 <th>Address</th>
                                                 <th>Location</th>
                                             </tr>
@@ -68,8 +68,8 @@
                                                     <td>{{ $hit->user->profile->getFullNameAttribute() }}</td>
                                                     <td><img src="{{ asset('storage/'.$hit->image) }}" height="50" width="50" class="img-circle" alt=""></td>
                                                     <td>{{ $hit->name }}</td>
-                                                    <td>{{ $hit->email }}</td>
-                                                    <td>{{ $hit->contact_number }}</td>
+                                                    {{--<td>{{ $hit->email }}</td>--}}
+                                                    {{--<td>{{ $hit->contact_number }}</td>--}}
                                                     <td>{{ $hit->school_name }}</td>
                                                     <td>{{ $hit->address }}</td>
                                                     <td>{{ $hit->location }}</td>
@@ -117,7 +117,7 @@
             function createDataForTimeline() {
                 let arr = [];
                 for (let hit of hits) {
-                    console.log(new Date(hit.hit_timestamp));
+                    // console.log(new Date(hit.hit_timestamp));
                     arr.push([new Date(hit.hit_timestamp), 1]);
                 }
 
