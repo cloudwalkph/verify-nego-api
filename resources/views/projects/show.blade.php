@@ -62,6 +62,7 @@
                                                 <th>Store</th>
                                                 <th>Address</th>
                                                 <th>Location</th>
+                                                <th>Other Details</th>
                                             </tr>
                                             @foreach($hits as $hit)
                                                 <tr>
@@ -73,6 +74,7 @@
                                                     <td>{{ $hit->school_name }}</td>
                                                     <td>{{ $hit->address }}</td>
                                                     <td>{{ $hit->location }}</td>
+                                                    <td>{{ $hit->other_details }}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
